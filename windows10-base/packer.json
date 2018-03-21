@@ -45,6 +45,16 @@
             "elevated_password": "vagrant"
         },
         {
+            "type": "file",
+            "source": "minimize-disk-writes.ps1",
+            "destination": "c:/windows/temp/minimize-disk-writes.ps1"
+        },
+        {
+            "type": "file",
+            "source": "clean-and-defrag.ps1",
+            "destination": "c:/windows/temp/clean-and-defrag.ps1"
+        },
+        {
             "type": "powershell",
             "script": "enable-rdp.ps1",
             "elevated_user": "vagrant",
