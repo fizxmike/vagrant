@@ -9,7 +9,8 @@ You have to have your own ISO file for Windows 10, with your own product key, ob
 
 ## Building the box
 **Be aware that building this base box is a time-consuming process. It takes me an entire evening**
-Making the machine is a multi-step process. First setting up Windows and some settings, followed by a manual Windows Updqates cycle. And finally running a few scripts to tweak the machine for optimal use as a virtual machine.
+
+Making the machine is a multi-step process. First setting up Windows and some settings, followed by a manual Windows Updates cycle. And finally running a few scripts to tweak the machine for optimal use as a virtual machine.
 
 The first step is done by opening a command shell or powershell in the windows10-base folder. Then run the Packer build:
 ```
