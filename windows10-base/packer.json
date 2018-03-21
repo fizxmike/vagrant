@@ -1,0 +1,56 @@
+{
+    "variables": {
+        "cpus": "2",
+        "memory_size": "2048",
+        "disk_size": "256000",
+        "iso_file": "windows10.iso",
+        "iso_checksum_type": "md5",
+        "iso_checksum": "b5319ffad571daecbaa6f6e779122179"
+    },
+    "builders": [{
+        "type": "virtualbox-iso",
+        "iso_url": "{{user `iso_file`}}",
+        "iso_checksum_type": "{{user `iso_checksum_type`}}",
+        "iso_checksum": "{{user `iso_checksum`}}",
+		"vm_name": "win10",
+		"output_directory": "output/win10",
+        "vboxmanage": [
+            [ "modifyvm", "{{.Name}}", "--memory", "{{user `memory_size`}}" ],
+            [ "modifyvm", "{{.Name}}", "--vram", "48" ],
+            [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ]
+        ],
+        "headless": "true",
+        "boot_wait": "2m",
+		"communicator": "winrm",
+        "winrm_username": "vagrant",
+        "winrm_password": "vagrant",
+		"winrm_timeout": "12h",
+		"winrm_port": "5985",
+        "shutdown_command": "shutdown /s /t 10 /f /d p:4:1",
+		"shutdown_timeout": "1h",
+		"guest_additions_mode": "attach",
+		"guest_additions_path": "VBoxGuestAdditions.iso",        
+		"guest_os_type": "Windows10_64",
+        "disk_size": "{{user `disk_size`}}",
+        "floppy_files": [
+            "Autounattend.xml",
+			"winrm.ps1"
+        ]
+	}],
+	"provisioners": [
+        {
+            "type": "powershell",
+            "script": "install-oracle-guest-additions.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant"
+        },
+        {
+            "type": "powershell",
+            "script": "enable-rdp.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant"
+        }
+    ]
+}
+
+
