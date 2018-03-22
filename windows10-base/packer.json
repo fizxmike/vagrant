@@ -47,12 +47,23 @@
         {
             "type": "file",
             "source": "minimize-disk-writes.ps1",
-            "destination": "c:/windows/temp/minimize-disk-writes.ps1"
+            "destination": "c:/users/vagrant/desktop/minimize-disk-writes.ps1"
         },
         {
             "type": "file",
             "source": "clean-and-defrag.ps1",
-            "destination": "c:/windows/temp/clean-and-defrag.ps1"
+            "destination": "c:/users/vagrant/desktop/clean-and-defrag.ps1"
+        },
+        {
+            "type": "file",
+            "source": "SetDefaultBrowser.exe",
+            "destination": "c:/windows/temp/SetDefaultBrowser.exe"
+        },
+        {
+            "type": "powershell",
+            "script": "basic-tools.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant"
         },
         {
             "type": "powershell",

@@ -3,6 +3,7 @@ The base windows 10 box has:
 - The VirtualBox Guest Additions installed
 - Remote Desktop enabled in the firewall
 - All Windows Updates installed
+- Some basic tooling like 7zip, Notepad++, etc
 
 ## Prerequisites: Windows ISO file
 You have to have your own ISO file for Windows 10, with your own product key, obviously. Copy it to the windows10-base folder and rename it to windows10.iso. Do not forget to change the iso_checksum variables in the packer.json file accordingly.
@@ -38,6 +39,7 @@ You can clean up after you by deleting the win10 VirtualBox machine and the outp
 ```
 vboxmanage unregistervm win10 --delete
 rmdir /s /q output
+del win10.box
 ```
 
 

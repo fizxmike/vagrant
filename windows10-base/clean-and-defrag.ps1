@@ -52,3 +52,8 @@ finally {
 }
 
 Del $FilePath
+
+# and finally remove the scripts we don't need any longer
+Del c:\users\vagrant\minimize-disk-writes.ps1
+Del c:\users\vagrant\clean-and-defrag.ps1
+
