@@ -26,12 +26,12 @@ I have tested several options to automate the Windows Updates. My experience is 
 - Do the Windows Updates manually as you would do on your local machine, and repeat checking updates until no updates are available any more. This can take a loooong time, depending on how outdated your ISO file is. Just be patient, reboot the system a few times, until the Windows Update screen says that your device is up to date.
 
 The last steps are important if you want to limit the disk writes to your virtual hard disk. This is especially useful if you are planning to use linked clones.
-Open a powershell prompt as administrator and run `.\windows\temp\minimize-disk-writes.ps1` (this file has been copied to the machine by the Packer build)
+Open a powershell prompt as administrator and run `.\users\vagrant\desktop\minimize-disk-writes.ps1` (this file has been copied to the machine by the Packer build)
 Read the script carefully before running it and taylor to your own needs. I might disable services that you prefer to leave enabled.
 
 Finally clean up and defragment the disk before packaging. This is recommended to do on each virtual machine before create the Vagrant box. 
-This powershell script has also been copied to the windows\temp folder: `.windows\temp\clean-and-defrag.ps1`.
-This script runs about 30 to 45 minutes (on my machine).
+This powershell script has also been copied to the windows\temp folder: `.\users\vagrant\desktop\\clean-and-defrag.ps1`.
+This script runs about 30 to 45 minutes on my machine.
 
 Now you can create a vagrant box from this virtual machine by typing: `vagrant package --output win10.box --base win10` on your host machine. The VM will be shut down, and a win10.box file will be created in your local folder.
 Add this box to your local vagrant repository with `vagrant box add windows10 win10.box`.
