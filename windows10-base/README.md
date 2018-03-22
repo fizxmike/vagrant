@@ -9,7 +9,7 @@ The base windows 10 box has:
 You have to have your own ISO file for Windows 10, with your own product key, obviously. Copy it to the windows10-base folder and rename it to windows10.iso. Do not forget to change the iso_checksum variables in the packer.json file accordingly.
 
 ## Building the box
-**Be aware that building this base box is a time-consuming process. It takes about 4 hours for me**
+**Be aware that building this base box is a time-consuming process. It takes about 4 hours for me.**
 
 Making the machine is a multi-step process. First setting up Windows and some settings, followed by a manual Windows Updates cycle. And finally running a few scripts to tweak the machine for optimal use as a virtual machine.
 
