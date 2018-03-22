@@ -13,6 +13,6 @@ That can easily be done by Chocolatey:
 choco install virtualbox vagrant packer -y
 ```
 # Boxes
-This repository has the instructions to build several Windows boxes. Each folder has its own README file describing the steps you need to do make the box.
+This repository has the instructions to build several Windows boxes. Each folder has its own README file describing the steps you need to do to make the box.
 
 - *windows10-base:* A bare Windows machine with all updates. The ideal starting point for building customized machines. 
