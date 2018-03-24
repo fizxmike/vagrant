@@ -4,8 +4,8 @@
         "memory_size": "2048",
         "disk_size": "256000",
         "iso_file": "windows10.iso",
-        "iso_checksum_type": "md5",
-        "iso_checksum": "b5319ffad571daecbaa6f6e779122179"
+        "iso_checksum_type": "sha1",
+        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69"
     },
     "builders": [{
         "type": "virtualbox-iso",
@@ -17,7 +17,9 @@
         "vboxmanage": [
             [ "modifyvm", "{{.Name}}", "--memory", "{{user `memory_size`}}" ],
             [ "modifyvm", "{{.Name}}", "--vram", "48" ],
-            [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ]
+            [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ],
+            [ "modifyvm", "{{.Name}}", "--clipboard", "bidirectional" ],
+            [ "modifyvm", "{{.Name}}", "--draganddrop", "hosttoguest" ]  
         ],
         "headless": "true",
         "boot_wait": "2m",
@@ -46,16 +48,6 @@
         },
         {
             "type": "file",
-            "source": "minimize-disk-writes.ps1",
-            "destination": "c:/users/vagrant/desktop/minimize-disk-writes.ps1"
-        },
-        {
-            "type": "file",
-            "source": "clean-and-defrag.ps1",
-            "destination": "c:/users/vagrant/desktop/clean-and-defrag.ps1"
-        },
-        {
-            "type": "file",
             "source": "SetDefaultBrowser.exe",
             "destination": "c:/windows/temp/SetDefaultBrowser.exe"
         },
@@ -70,8 +62,33 @@
             "script": "enable-rdp.ps1",
             "elevated_user": "vagrant",
             "elevated_password": "vagrant"
+        },
+        {
+            "type": "powershell",
+            "script": "minimize-disk-writes.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant"
+        },
+        {
+            "type": "powershell",
+            "script": "ngen.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant",
+            "valid_exit_codes": [0, 4294967295]
+        },
+        {
+            "type": "powershell",
+            "script": "clean-and-defrag.ps1",
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant"
         }
-    ]
+    ],
+    "post-processors": [{
+        "type": "vagrant",
+        "keep_input_artifact": false,
+        "output": "windows10.box"
+    }]
+
 }
 
 

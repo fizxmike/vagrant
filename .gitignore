@@ -2,3 +2,4 @@ windows10.iso
 output/
 packer_cache/
 *.box
+.vagrant/

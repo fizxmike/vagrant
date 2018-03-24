@@ -50,6 +50,12 @@
          </DiskConfiguration>
          <ImageInstall>
             <OSImage>
+              <InstallFrom>
+                <MetaData wcm:action="add">   
+                  <Key>/IMAGE/NAME</Key>
+                  <Value>Windows 10 Pro</Value>
+                </MetaData>
+               </InstallFrom>
                <InstallTo>
                   <DiskID>0</DiskID>
                   <PartitionID>2</PartitionID>
@@ -60,9 +66,13 @@
          <UserData>
             <AcceptEula>true</AcceptEula>
             <FullName>vagrant</FullName>
-            <Organization>Onguard</Organization>
-        </UserData>
-      </component>
+            <Organization>JanWare</Organization>
+            <ProductKey>
+               <Key></Key>
+                <WillShowUI>Never</WillShowUI>
+            </ProductKey>       
+       </UserData>
+       </component>
    </settings>
    <settings pass="offlineServicing">
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
