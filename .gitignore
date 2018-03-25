@@ -1,5 +1,9 @@
 windows10.iso
+*.box
+*.ost
+*.tmp
+*Autodiscover.xml
 output/
 packer_cache/
-*.box
 .vagrant/
+
