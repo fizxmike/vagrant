@@ -6,6 +6,6 @@ build:
     - jyotti/install-packer:
       version: 1.2.1
     - script:
-        name: install packer
+        name: check packer
         code: |
-          apt-get install git
+          packer -v
