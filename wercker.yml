@@ -1,18 +1,6 @@
-box: ubuntu
+box: ngyuki/vagrant-virtualbox@0.0.2
 build:
   steps:
-    - install-packages:
-      packages: curl virtualbox virtualbox-dkms dkms
-    - jyotti/install-packer:
-      version: 1.2.1
-    - script:
-        name: install virtualbox dkms
-        code: |
-          uname -a
-    - script:
-        name: install virtualbox dkms
-        code: |
-          dpkg-reconfigure virtualbox-dkms
     - script:
         name: run packer build for windows10base
         code: |
