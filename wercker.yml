@@ -2,9 +2,13 @@ box: ubuntu
 build:
   steps:
     - install-packages:
-      packages: curl virtualbox virtualbox-dkms linux-headers
+      packages: curl virtualbox virtualbox-dkms 
     - jyotti/install-packer:
       version: 1.2.1
+    - script:
+        name: install virtualbox dkms
+        code: |
+          uname -a
     - script:
         name: install virtualbox dkms
         code: |
