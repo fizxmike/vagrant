@@ -1,10 +1,11 @@
 box: ubuntu
 build:
   steps:
+    - jyotti/install-packer:
+      version: 1.2.1
     - install-packages:
       packages: packer
-
     - script:
         name: install packer
         code: |
-          apt-get install packer
+          apt-get install git
