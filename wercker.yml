@@ -1,4 +1,4 @@
-box: hashicorp/packer
+box: mpfmedical/buildbox-packer
 build:
   steps:
     - script:
