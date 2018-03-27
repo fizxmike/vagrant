@@ -1,4 +1,4 @@
-box: diegobt/virtualbox
+box: ineentho/docker-packer-virtualbox
 build:
   steps:
     - jyotti/install-packer:
