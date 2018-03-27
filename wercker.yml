@@ -1,4 +1,4 @@
-box: ngyuki/vagrant-virtualbox@0.0.2
+box: ngyuki/vagrant-virtualbox
 build:
   steps:
     - script:
