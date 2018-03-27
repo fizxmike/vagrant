@@ -8,5 +8,5 @@ build:
     - script:
         name: run packer build for windows10base
         code: |
-          cd .\windows10-base
+          cd windows10-base
           packer build packer.json
