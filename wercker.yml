@@ -1,4 +1,4 @@
-box: wood2986/virtualbox
+box: meyskens/virtualbox
 build:
   steps:
     - jyotti/install-packer:
