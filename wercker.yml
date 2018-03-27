@@ -1,10 +1,10 @@
 box: ubuntu
 build:
   steps:
+    - install-packages:
+      packages: curl
     - jyotti/install-packer:
       version: 1.2.1
-    - install-packages:
-      packages: packer
     - script:
         name: install packer
         code: |
