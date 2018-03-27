@@ -5,7 +5,8 @@
         "disk_size": "256000",
         "iso_file": "windows10.iso",
         "iso_checksum_type": "sha1",
-        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69"
+        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69",
+        "cloud_token": ""
     },
     "builders": [{
         "type": "virtualbox-iso",
@@ -92,7 +93,7 @@
         "type": "vagrant-cloud",
         "box_tag": "papasmurf/windows10",
         "access_token": "{{user `cloud_token`}}",
-        "version": "1.0.{{timestamp}}"
+        "version": "1.0"
       }]]
 
 }
