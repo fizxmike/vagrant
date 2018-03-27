@@ -1,4 +1,4 @@
-box: thenewvu/docker-virtualbox
+box: wood2986/virtualbox
 build:
   steps:
     - jyotti/install-packer:
