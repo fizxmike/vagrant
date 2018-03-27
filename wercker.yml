@@ -7,6 +7,7 @@ build:
         name: uname
         code: |
           uname -a
+          vboxmanage
     - script:
         name: run packer build for windows10base
         code: |
