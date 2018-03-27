@@ -2,7 +2,7 @@ box: ubuntu
 build:
   steps:
     - install-packages:
-      packages: curl
+      packages: curl virtualbox
     - jyotti/install-packer:
       version: 1.2.1
     - script:
