@@ -1,6 +1,20 @@
-box: ngyuki/vagrant-virtualbox
+box: debian
 build:
   steps:
+    - script:
+        name: install packages
+        code: |
+          apt-get install curl virtualbox virtualbox-dkms dkms
+    - jyotti/install-packer:
+      version: 1.2.1
+    - script:
+        name: uname
+        code: |
+          uname -a
+    - script:
+        name: install virtualbox dkms
+        code: |
+          dpkg-reconfigure virtualbox-dkms
     - script:
         name: run packer build for windows10base
         code: |
