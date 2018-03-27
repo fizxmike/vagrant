@@ -2,13 +2,12 @@ box: ubuntu
 build:
   steps:
     - install-packages:
-      packages: curl virtualbox virtualbox-dkms
+      packages: curl virtualbox virtualbox-dkms linux-headers
     - jyotti/install-packer:
       version: 1.2.1
     - script:
         name: install virtualbox dkms
         code: |
-          apt-get install linux-headers-`uname -r`
           dpkg-reconfigure virtualbox-dkms
     - script:
         name: run packer build for windows10base
