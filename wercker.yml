@@ -9,3 +9,5 @@ build:
         name: check packer
         code: |
           packer -v
+          ls
+          
