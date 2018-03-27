@@ -19,7 +19,7 @@
             [ "modifyvm", "{{.Name}}", "--vram", "48" ],
             [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ],
             [ "modifyvm", "{{.Name}}", "--clipboard", "bidirectional" ],
-            [ "modifyvm", "{{.Name}}", "--draganddrop", "hosttoguest" ]  
+            [ "modifyvm", "{{.Name}}", "--draganddrop", "bidirectional" ]  
         ],
         "headless": "true",
         "boot_wait": "2m",
@@ -83,11 +83,17 @@
             "elevated_password": "vagrant"
         }
     ],
-    "post-processors": [{
+    "post-processors": [[{
         "type": "vagrant",
         "keep_input_artifact": false,
         "output": "windows10.box"
-    }]
+    },
+    {
+        "type": "vagrant-cloud",
+        "box_tag": "papasmurf/windows10",
+        "access_token": "{{user `cloud_token`}}",
+        "version": "1.0.{{timestamp}}"
+      }]]
 
 }
 
