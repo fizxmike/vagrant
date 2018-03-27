@@ -1,7 +1,10 @@
-box: debian
+box: ubuntu
 build:
   steps:
+    - install-packages:
+      packages: packer
+
     - script:
-        name: echo
+        name: install packer
         code: |
-          echo "hello world!"
+          apt-get install packer
