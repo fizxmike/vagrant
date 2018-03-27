@@ -1,4 +1,4 @@
-box: mpfmedical/buildbox-packer
+box: unifio/packer-virtualbox
 build:
   steps:
     - script:
