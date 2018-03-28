@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+
+    class LicenseKey
+        def to_s
+            print "Enter your Windows License Key (XXXXX-XXXXX-XXXXX-XXXXX-XXXXX).\n"
+            print "License: " 
+            STDIN.gets.chomp
+        end
+    end
+    
+  config.vm.box = "papasmurf/win10pro-office2016"
+  config.vm.define "officetest"
+  config.vm.communicator = "winrm"
+  config.winrm.username = "vagrant"
+  config.winrm.password = "vagrant"
+  config.winrm.timeout = 180
+  config.vm.guest = :windows
+  config.windows.halt_timeout = 15
+  config.vm.network "forwarded_port", guest: 3389, host: 3390, id: "rdp", auto_correct: true
+  config.vm.synced_folder "d:/", "/data"
+  config.vm.provider "virtualbox" do |vb|
+    vb.linked_clone = true
+    vb.memory = "2048"
+    vb.cpus = 2
+	  vb.name = "officetest"
+	  vb.customize ["modifyvm", :id, "--vram", "128"]
+	  vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
+	  vb.customize ["modifyvm", :id, "--accelerate2dvideo", "off"]
+  end
+  config.vm.provision "shell" do |s|
+    s.env: {"LICENSEKEY" => LicenseKey.new}
+    s.inline = "c:/vagrant/customize.cmd $LICENSEKEY"
+  end
+end
