@@ -1,12 +1,11 @@
 {
     "variables": {
         "cpus": "2",
-        "memory_size": "2048",
+        "memory_size": "6144",
         "disk_size": "256000",
         "iso_file": "windows10.iso",
         "iso_checksum_type": "sha1",
-        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69",
-        "cloud_token": ""
+        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69"
     },
     "builders": [{
         "type": "virtualbox-iso",
@@ -20,7 +19,8 @@
             [ "modifyvm", "{{.Name}}", "--vram", "48" ],
             [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ],
             [ "modifyvm", "{{.Name}}", "--clipboard", "bidirectional" ],
-            [ "modifyvm", "{{.Name}}", "--draganddrop", "bidirectional" ]  
+            [ "modifyvm", "{{.Name}}", "--draganddrop", "bidirectional" ],  
+            [ "sharedfolder", "add", "{{.Name}}", "--name", "vs2017setup", "--hostpath", "c:\\vs2017layout", "--automount"]
         ],
         "headless": "true",
         "boot_wait": "2m",
@@ -48,53 +48,25 @@
             "elevated_password": "vagrant"
         },
         {
-            "type": "file",
-            "source": "SetDefaultBrowser.exe",
-            "destination": "c:/windows/temp/SetDefaultBrowser.exe"
+            "type": "windows-restart"
         },
         {
             "type": "powershell",
-            "script": "basic-tools.ps1",
-            "elevated_user": "vagrant",
-            "elevated_password": "vagrant"
-        },
-        {
-            "type": "powershell",
-            "script": "enable-rdp.ps1",
-            "elevated_user": "vagrant",
-            "elevated_password": "vagrant"
-        },
-        {
-            "type": "powershell",
-            "script": "minimize-disk-writes.ps1",
-            "elevated_user": "vagrant",
-            "elevated_password": "vagrant"
-        },
-        {
-            "type": "powershell",
-            "script": "ngen.ps1",
+            "scripts": ["enable-rdp.ps1",
+                        "software.ps1",
+                        "minimize-disk-writes.ps1",
+                        "ngen.ps1",
+                        "clean-and-defrag.ps1"],
             "elevated_user": "vagrant",
             "elevated_password": "vagrant",
-            "valid_exit_codes": [0, 4294967295]
-        },
-        {
-            "type": "powershell",
-            "script": "clean-and-defrag.ps1",
-            "elevated_user": "vagrant",
-            "elevated_password": "vagrant"
+            "valid_exit_codes": [0, 3010, 4294967295]
         }
     ],
-    "post-processors": [[{
+    "post-processors": [{
         "type": "vagrant",
         "keep_input_artifact": false,
         "output": "windows10.box"
-    },
-    {
-        "type": "vagrant-cloud",
-        "box_tag": "papasmurf/windows10",
-        "access_token": "{{user `cloud_token`}}",
-        "version": "1.0"
-      }]]
+    }]
 
 }
 
