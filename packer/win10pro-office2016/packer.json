@@ -3,7 +3,7 @@
         "cpus": "2",
         "memory_size": "2048",
         "disk_size": "256000",
-        "iso_file": "windows10.iso",
+        "iso_file": "../iso/windows10.iso",
         "iso_checksum_type": "sha1",
         "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69"
     },
@@ -31,23 +31,23 @@
         "shutdown_command": "shutdown /s /t 10 /f /d p:4:1",
 		"shutdown_timeout": "1h",
 		"guest_additions_mode": "attach",
-		"guest_additions_path": "VBoxGuestAdditions.iso",        
+		"guest_additions_path": "../iso/VBoxGuestAdditions.iso",        
 		"guest_os_type": "Windows10_64",
         "disk_size": "{{user `disk_size`}}",
         "floppy_files": [
             "Autounattend.xml",
-			"winrm.ps1"
+			"../scripts/winrm.ps1"
         ]
 	}],
 	"provisioners": [
         {
             "type": "powershell",
-            "scripts": ["install-oracle-guest-additions.ps1",
-                        "enable-rdp.ps1",
+            "scripts": ["../scripts/install-oracle-guest-additions.ps1",
+                        "../scripts/enable-rdp.ps1",
                         "software.ps1",
-                        "minimize-disk-writes.ps1",
-                        "ngen.ps1",
-                        "clean-and-defrag.ps1"],
+                        "../scripts/minimize-disk-writes.ps1",
+                        "../scripts/ngen.ps1",
+                        "../scripts/clean-and-defrag.ps1"],
             "elevated_user": "vagrant",
             "elevated_password": "vagrant",
             "valid_exit_codes": [0, 4294967295]
