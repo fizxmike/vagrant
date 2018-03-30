@@ -15,3 +15,6 @@ rmdir /s /q c:\janban
 
 REM import my prefered Outlook settings
 regedit /s c:\vagrant\outlook.settings.reg
+
+REM just in case this service is still set to delayed
+sc config "WinRM" start=auto

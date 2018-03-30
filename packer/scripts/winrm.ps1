@@ -22,3 +22,7 @@ if([environment]::OSVersion.version.Major -ge 6) {
   winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="2048"}'
   Restart-Service -Name WinRM
   netsh advfirewall firewall add rule name="WinRM-HTTP" dir=in localport=5985 protocol=TCP action=allow
+
+  #Set startup type from delayed to automatic to prevent a lot of waiting time later
+  $command = "sc.exe config 'WINRM' start= auto"
+  invoke-expression -command $command
