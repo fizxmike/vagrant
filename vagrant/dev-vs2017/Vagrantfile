@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
         end
     end
     
-  config.vm.box = "papasmurf/win10pro-office2016"
+  config.vm.box = "papasmurf/win10pro-vs2017ent"
   config.vm.define "dev-vs2017"
   config.vm.communicator = "winrm"
   config.winrm.username = "vagrant"
@@ -18,7 +18,6 @@ Vagrant.configure("2") do |config|
   config.windows.halt_timeout = 15
   config.vm.network "forwarded_port", guest: 3389, host: 3390, id: "rdp", auto_correct: true
   config.vm.synced_folder "d:/", "/data"
-  config.vm.synced_folder "c:/vs2017layout", "/vs2017setup"
   config.vm.provider "virtualbox" do |vb|
     vb.linked_clone = true
     vb.memory = "6144"
