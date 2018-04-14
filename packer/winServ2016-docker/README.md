@@ -3,7 +3,9 @@ You are welcome to try to build from ISO and use the proper Autounattended.xml f
 
 * Starting with VMWare Workstation
 * Downloaded Most Recent Windows 2016 Server
-* Enabled NestedVM/HyperV Passthrough (check boxes under Settings : Hardware : Processors : "Virtualize...")
+* Enabled NestedVM (HyperV) Guest Support
+  * In VMWare Workstation 14, check boxes under: Settings > Hardware > Processors > "Virtualize..."
+  * [Reference](https://communities.vmware.com/thread/498837)
 * Installed [Docker-For-Windows](https://docs.docker.com/docker-for-windows/install/)
 * Installed winrm using [winrm.ps1](winrm.ps1)
 * Installed all windows updates
