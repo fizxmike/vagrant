@@ -1,12 +1,14 @@
 # VMX Prep
+You are welcome to try to build from ISO and use the proper Autounattended.xml file [these peeps got one](https://github.com/rgl/windows-2016-vagrant). However, I didn't see how to enable VMWare NestedVM support with the [vmware builder](https://www.packer.io/docs/builders/vmware-iso.html). So we proceed manually using the steps below:
 
 * Starting with VMWare Workstation
 * Downloaded Most Recent Windows 2016 Server
-* Enabled NestedVM/HyperV Passthrough (check boxes under settings>Hardware>Processors> "Virtualize Intel" and "CPU Perf Counters")
+* Enabled NestedVM (HyperV) Guest Support
+  * In VMWare Workstation 14, check boxes under: Settings > Hardware > Processors > "Virtualize..."
+  * [Reference](https://communities.vmware.com/thread/498837)
+* Installed [Docker-For-Windows](https://docs.docker.com/docker-for-windows/install/)
 * Installed winrm using [winrm.ps1](winrm.ps1)
-  * (you are welcome to try to figure out how to make the proper Autounattended.xml file - but how to enable VMWare hyperv passthrough?)
-* Installed all windows updates updates
-* Installed Docker-For-Windows
+* Installed all windows updates
 
 # Build
 * Shutdown the VM above
