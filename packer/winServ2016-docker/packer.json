@@ -3,10 +3,9 @@
         "cpus": "2",
         "memory_size": "6144",
         "disk_size": "256000",
-        "iso_file": "../iso/windows10.iso",
         "iso_checksum_type": "sha1",
         "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69",
-        "vmx_file":"C:/Users/?????/Documents/Virtual Machines/Windows Server 2016/Windows Server 2016.vmx"
+        "vmx_file":"C:/Users/blw8175/Documents/Virtual Machines/Windows Server 2016/Windows Server 2016.vmx"
     },
     "builders": [{
         "type": "vmware-vmx",
@@ -17,8 +16,36 @@
 		"winrm_timeout": "12h",
 		"winrm_port": "5985",
         "shutdown_command": "shutdown /s /t 10 /f /d p:4:1",
-        "shutdown_timeout": "1h"
+        "shutdown_timeout": "1h",
+        "floppy_files": [
+            "autounattend.xml",
+			"../scripts/winrm.ps1"
+        ]
     }],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "scripts": ["../scripts/enable-rdp.ps1",
+                        "minimize-disk-writes.ps1"],
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant",
+            "valid_exit_codes": [0, 3010, 4294967295]
+        },
+        {
+            "type": "powershell",
+            "scripts": ["software.ps1"],
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant",
+            "valid_exit_codes": [0, 3010, 4294967295]
+        },
+        {
+            "type": "powershell",
+            "scripts": ["../scripts/clean-and-defrag.ps1"],
+            "elevated_user": "vagrant",
+            "elevated_password": "vagrant",
+            "valid_exit_codes": [0, 3010, 4294967295]
+        }
+    ],
     "post-processors": [{
         "type": "vagrant",
         "keep_input_artifact": false,

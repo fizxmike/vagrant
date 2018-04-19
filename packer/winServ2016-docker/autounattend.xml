@@ -76,33 +76,23 @@
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
                 <ProtectYourPC>1</ProtectYourPC>
             </OOBE>
-            <TimeZone>UTC</TimeZone>
+            <TimeZone>Central Standard Time</TimeZone>
             <UserAccounts>
-                <AdministratorPassword>
-                    <Value>dgBhAGcAcgBhAG4AdABBAGQAbQBpAG4AaQBzAHQAcgBhAHQAbwByAFAAYQBzAHMAdwBvAHIAZAA=</Value>
-                    <PlainText>false</PlainText>
-                </AdministratorPassword>
                 <LocalAccounts>
-                    <LocalAccount wcm:action="add">
-                        <Password>
-                            <Value>dgBhAGcAcgBhAG4AdABQAGEAcwBzAHcAbwByAGQA</Value>
-                            <PlainText>false</PlainText>
-                        </Password>
-                        <Description>Vagrant</Description>
-                        <DisplayName>Vagrant</DisplayName>
-                        <Group>Administrators</Group>
-                        <Name>vagrant</Name>
-                    </LocalAccount>
+                <LocalAccount wcm:action="add">
+                    <Password>
+                        <Value>vagrant</Value>
+                        <PlainText>true</PlainText>
+                    </Password>
+                    <Description />
+                    <DisplayName>vagrant</DisplayName>
+                    <Group>Administrators</Group>
+                    <Name>vagrant</Name>
+                </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
-            <AutoLogon>
-                <Password>
-                    <Value>dgBhAGcAcgBhAG4AdABQAGEAcwBzAHcAbwByAGQA</Value>
-                    <PlainText>false</PlainText>
-                </Password>
-                <Enabled>true</Enabled>
-                <Username>vagrant</Username>
-            </AutoLogon>
+            <RegisteredOrganization />
+            <RegisteredOwner>vagrant</RegisteredOwner>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
                     <Order>1</Order>
