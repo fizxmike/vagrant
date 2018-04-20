@@ -24,5 +24,5 @@ if([environment]::OSVersion.version.Major -ge 6) {
   netsh advfirewall firewall add rule name="WinRM-HTTP" dir=in localport=5985 protocol=TCP action=allow
 
   #Set startup type from delayed to automatic to prevent a lot of waiting time later
-  $command = "sc.exe config 'WINRM' start= auto"
+  $command = "sc.exe config 'WINRM' start=auto"
   invoke-expression -command $command

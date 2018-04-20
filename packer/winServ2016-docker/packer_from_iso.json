@@ -3,24 +3,28 @@
         "cpus": "2",
         "memory_size": "6144",
         "disk_size": "256000",
-        "iso_file": "../iso/windows10.iso",
-        "iso_checksum_type": "sha1",
-        "iso_checksum": "EA214EE684A5BB8230707104C54A3B74D92F1D69",
-        "vmx_file":"C:/Users/blw8175/Documents/Virtual Machines/Windows Server 2016/Windows Server 2016.vmx"
+        "iso_file": "C:/Users/blw8175/Downloads/en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso",
+        "iso_checksum_type": "MD5",
+        "iso_checksum": "e8adeebcd8076702593469e33cc2d092"
     },
     "builders": [{
-        "type": "vmware-vmx",
-        "source_path": "{{user `vmx_file`}}",
-        "communicator": "winrm",
+        "iso_url": "{{user `iso_file`}}",
+        "iso_checksum_type": "{{user `iso_checksum_type`}}",
+        "iso_checksum": "{{user `iso_checksum`}}",
+        "disk_size": "{{user `disk_size`}}",
+...https://www.packer.io/docs/builders/vmware-iso.html        
+        "vm_name": "winserv16",
+		"output_directory": "output/winserv16",
+		"communicator": "winrm",
         "winrm_username": "vagrant",
         "winrm_password": "vagrant",
 		"winrm_timeout": "12h",
 		"winrm_port": "5985",
         "shutdown_command": "shutdown /s /t 10 /f /d p:4:1",
-        "shutdown_timeout": "1h",
+		"shutdown_timeout": "1h",
         "floppy_files": [
             "autounattend.xml",
-            "winrm.ps1"
+			"../scripts/winrm.ps1"
         ]
     }],
     "post-processors": [{
