@@ -19,5 +19,5 @@ c:\temp\vs_Community.exe --includeRecommended --includeOptional --passive --nore
  --add Microsoft.VisualStudio.Workload.Azure `
  --add Microsoft.VisualStudio.Component.LinqToSql | Out-Null
 
- # also, Installing Azure workload kills powershell processes !?
+# Note: Installing Azure workload kills powershell processes !?
 # https://github.com/jberezanski/ChocolateyPackages/issues/35#issuecomment-370054633
